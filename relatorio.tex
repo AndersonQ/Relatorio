@@ -1,0 +1,105 @@
+\documentclass[12pt]{abnt}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,plainpages=false,pagebackref,hyperfootnotes=false,pdfpagelabels]{hyperref}
+%\usepackage[portugues,boxed,lined]{algorithm2e}
+
+%Para inserir o códigos fonte
+\usepackage{float}   
+\usepackage{fancyvrb}
+
+%===== Códigos Fonte =====
+\newenvironment{codeverbatim}{\VerbatimEnvironment \small
+   \begin{Verbatim}[xleftmargin=20mm]}
+   {\end{Verbatim}}
+%=======
+\floatstyle{boxed}  % tipos: plain, boxed, ruled
+\newfloat{codigo}{tbp}{lop}[section]  % numera os captions com  número de seção.
+\floatname{codigo}{Código}
+% nome para ser usado no sumário
+\newcommand{\listofcodename}{Lista de Códigos}
+%=========================
+
+\title{``Atividade pártica de Segurança de Dados''}
+
+\author{Anderson de França Queiroz\\
+Tiago de França Queiroz}
+
+%\date{Abril de 2012}
+
+\begin{document}
+
+\sloppy
+
+\maketitle
+
+\begin{titlepage}
+
+  \vspace{6cm}
+
+  \begin{flushleft}
+    \sffamily\slshape
+    ``If you don't stand for something,\\
+	you'll fall for anything''\\
+	(Filme Sucker Punch)
+   
+    \vspace{1cm}
+    
+    \end{flushleft}
+
+\end{titlepage}
+
+%\clearpage
+\tableofcontents
+\clearpage
+
+\chapter{Descrição de um ataque}
+
+A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa ofereçe é o serviço.
+Ter um serviço pode causar perdas como: uma compra não ser realizada(sites de e-commerce); clientes trocarem de empresa para uma cujos
+serviços não fiquem indisponíveis; perda de confiabilidade; entre outras coisas.
+
+Um ataque simples
+que visa indisponibilizar serviço é o ataque de negação de serviço, DoS (\textit{Denial-of-Service}), 
+em resumo esse tipo de ataque realiza um número muito grande
+de requisições ao serviço em curto espaço de tempo, assim o servidor não consegue reponder a todos, o que gera indisponibilidade do sistema.
+Existe a variante distribuida do DoS, o DDoS (\textit{Distributed Denial-of-Service}), 
+que utiliza simultaneamente vários computadores para realizar ataques de DoS a um mesmo alvo.
+
+\chapter{Roteiro de ataque de DDoS}
+
+O ataque de DDoS (\textit{Distributed Denial-of-Service}) que será estudado nesta aula objetiva indisponibilizar o serviço de SSH comumente
+utulizado para acesso remoto a computadores. bla bla bla...
+
+\section{Criando um programa de DoS}
+
+A negação de serviço consiste em muitas requisições em um curto intervalo de tempo, de modo que o servidor não consiga atender a todas. Então nesse
+experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmereas requisições \texttt{SSH} a um servidor.
+
+\begin{enumerate}
+
+	\item Abra o editor ASCI de sua preferência, sugere-se a utulização do \texttt{VIM}. Em um terminal execute \texttt{vim};
+	\item Digite o código REFERENCIAR O CODIGO;
+	\item Salve com o nome \texttt{DoS.c}. Utilize ESC :w Dos.c;
+	\item Saia o editor. Utilize ESC :q;
+	\item Compile. No terminal execute \texttt{cc DoS.c -o DoS};
+
+\end{enumerate}
+
+%\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+%\begin{codigo}[!hbt]
+%   \tiny  % tamanho da fonte
+%      %\vspace{2mm}
+%      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{Code/HelloWorldKernel.cu}
+%   \caption{\textit{Hello World} com uma chamada de \textit{kernel}}
+%   \label{code.HelloWorldKernel.cu}
+%\end{codigo}
+
+
+\clearpage
+\bibliography{relatorio}
+
+\end{document}
