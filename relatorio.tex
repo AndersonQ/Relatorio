@@ -167,9 +167,51 @@ Para simular o ataque de DoS realize os seguintes passos:
 
 \end{enumerate}
 
+\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+\begin{codigo}[!hbt]
+   \tiny  % tamanho da fonte
+      %\vspace{2mm}
+      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{nmap.txt}
+   \caption{Exemplo de saída do \texttt{nmap}.}
+   \label{nmap}
+\end{codigo}
+
+Observe que na linha 9 lindica que o \texttt{ssh} está rodando e a porta está aberta, então, localize os IPs que estão com a porta 22 
+aberta e substitua o valor da macro \texttt{COMANDO} para \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA}, em nosso exemplo seria
+\texttt{ssh ufabc@192.168.1.5}. 
+
+Rode no terminal o comando \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA} e quando for perguntado se deve adicionar a chave reponda sim(yes).
+Agora compile e execute o programa. Observe a saída do programa, o que ela indica?
+
+É possível utilizar o \texttt{wireshark} para observar o tráfego da rede e ver o ataque acontecendo, para isso abre o \texttt{wireshark}
+(em um terminal digite \texttt{sudo wireshark}. Na tela inicial localize a lista de interfaces de rede e escolha a interface conectada na
+rede onde está sendo realizado o ataque, em nosso exemplo é a \texttt{wlan0}, como é mostrado na figura \ref{wireshark}.
+
+Após selecionar a interface de rede a captura de pacotes inciará, então no campo \texttt{Filter} coloque \texttt{ip.dst == IP\_SOB\_ATAQUE},
+em nosso exemplo seria \texttt{ip.dst == 192.168.1.5}, como pode ser visto na figura \ref{captura}. Assim apenas os pacotes endereçados
+a máquina sob ataque irão aparecer. É possível identificar as requisições de conexão ssh? Existe apenas uma requisição ou várias?
+
+\begin{figure}[!hbt]
+  \centering
+  \includegraphics[scale=0.3]{Wireshark-s}
+  \caption[Wireshark-s]{Selecionando interface conectada a rede no \textit{wireshark}.}
+  \label{wireshark}
+\end{figure}
+
+\begin{figure}[!hbt]
+  \centering
+  \includegraphics[scale=0.3]{Wireshark-cap}
+  \caption[Wireshark-cap]{Filtrando pacotes no \texttt{wireshark}.}
+  \label{captura}
+\end{figure}
+
+
+
+
 \chapter{Teste do Roteiro}
 Primeiramente o namp foi executado para descobrir quais máquinas possuiam um servidor
 ssh ativo, o resultado pode ser visto no código \ref{nmap}
+A saída será similar a esta:
 
 \renewcommand{\baselinestretch}{0.5}  % distância entre linhas
 \begin{codigo}[!hbt]

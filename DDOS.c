@@ -31,7 +31,10 @@
 void *comando(void *v)
 {
 	while(42)
+	{
+		printf("Executando o comando: \"%s\"\n", COMANDO);
 		system(COMANDO);
+	}
 }
 
 int main(void)
