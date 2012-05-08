@@ -78,7 +78,7 @@ um programa que ele desenvolveu para gerar requisições de conexão com o servi
 diferentes, ou seja, um ataque de DDoS -- \textit{Distributed Denial-of-Service}.
 
 
-A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa ofereçe é o serviço.
+A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa oferece é o serviço.
 Ter um serviço indisponível pode causar perdas como: compras não serem realizadas (sites de e-commerce); clientes trocarem de empresa para uma cujos
 serviços não fiquem indisponíveis; perda de confiabilidade; entre outras coisas.
 
@@ -99,13 +99,13 @@ os alunos utilizam o mesmo usuário, sempre que alguém logar no computador o at
 \chapter{Roteiro de ataque de DDoS}
 
 O ataque de DDoS (\textit{Distributed Denial-of-Service}) que será estudado nesta aula objetiva indisponibilizar o serviço de SSH comumente
-utulizado para acesso remoto a computadores.
+utilizado para acesso remoto a computadores.
 
 \section{Criando um programa de DoS}
 \label{programa}
 
 A negação de serviço consiste em muitas requisições em um curto intervalo de tempo, de modo que o servidor não consiga atender a todas. Então nesse
-experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmeras requisições \texttt{SSH} a um servidor.
+experimento criaremos um programa em linguagem C que utiliza \textit{multithread} para realizar inúmeras requisições \texttt{SSH} a um servidor.
 
 \begin{enumerate}
 
@@ -156,8 +156,8 @@ executado por várias máquinas (preferencialmente com conexões distintas a int
 
 Para realizar o ataque primeiro é preciso descobrir quais máquinas estão com a porta 22 (porta do ssh)
 aberta, para isso utilize o nmap da seguinte forma: \textit{nmap -T4 192.168.1.0/24}, onde o 192.168.1.0
-é o IP da rede alvo. Analize a saída
-do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como descirto na sessão \ref{programa}.
+é o IP da rede alvo. Analise a saída
+do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como descrito na sessão \ref{programa}.
 
 \renewcommand{\baselinestretch}{0.5}  % distância entre linhas
 \begin{codigo}[!hbt]
