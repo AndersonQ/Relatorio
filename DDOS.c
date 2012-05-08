@@ -10,7 +10,8 @@
  *       Revision:  none
  *       Compiler:  gcc
  *
- *         Author:  Tiago de França Queiroz (Queiroz, T. F.), tiago.f.q(.AT,)gmail dot com
+ *         Author: Anderson de França Queiroz (Queiroz, A. F.), anderson.f.queiroz(.AT,)gmail dot com 
+ *         	   Tiago de França Queiroz (Queiroz, T. F.), tiago.f.q(.AT,)gmail dot com
  *        Company:  UFABC
  *
  * =====================================================================================
