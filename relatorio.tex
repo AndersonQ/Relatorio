@@ -154,18 +154,9 @@ DoS ou DDoS (\textit{Distributed Denial of Service}). O DDoS é um ataque de DoS
 executado por várias máquinas (preferêncialmente com conexões distintas a internet) simultâneamente.
 
 Para realizar o ataque primeiro é preciso descobrir quais máquinas estão com a porta 22 (porta do ssh)
-aberta, para isso utilize o nmap da seguinte forma: \textit{nmap -A 192.168.1.0/24}. Analize a saída
+aberta, para isso utilize o nmap da seguinte forma: \textit{nmap -T4 192.168.1.0/24}, onde o 192.168.1.0
+é o IP da rede alvo. Analize a saída
 do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como descirto na sessão \ref{programa}.
-
-\subsection{DoS}
-
-Para simular o ataque de DoS realize os seguintes passos:
-
-\begin{enumerate}
-
-	\item Escolha a máquina alvo
-
-\end{enumerate}
 
 \renewcommand{\baselinestretch}{0.5}  % distância entre linhas
 \begin{codigo}[!hbt]
@@ -183,8 +174,8 @@ aberta e substitua o valor da macro \texttt{COMANDO} para \texttt{ssh USUÁRIO@I
 Rode no terminal o comando \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA} e quando for perguntado se deve adicionar a chave reponda sim(yes).
 Agora compile e execute o programa. Observe a saída do programa, o que ela indica?
 
-É possível utilizar o \texttt{wireshark} para observar o tráfego da rede e ver o ataque acontecendo, para isso abre o \texttt{wireshark}
-(em um terminal digite \texttt{sudo wireshark}. Na tela inicial localize a lista de interfaces de rede e escolha a interface conectada na
+É possível utilizar o \texttt{wireshark} para observar o tráfego da rede e ver o ataque acontecendo, para isso abra o \texttt{wireshark}
+(em um terminal digite \texttt{sudo wireshark}). Na tela inicial localize a lista de interfaces de rede e escolha a interface conectada na
 rede onde está sendo realizado o ataque, em nosso exemplo é a \texttt{wlan0}, como é mostrado na figura \ref{wireshark}.
 
 Após selecionar a interface de rede a captura de pacotes inciará, então no campo \texttt{Filter} coloque \texttt{ip.dst == IP\_SOB\_ATAQUE},
