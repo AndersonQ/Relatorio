@@ -78,19 +78,19 @@ um programa que ele desenvolveu para gerar requisições de conexção com o ser
 diferentes, ou seja, um ataque de DDoS -- \textit{Distributed Denial-of-Service}.
 
 A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa ofereçe é o serviço.
-Ter um serviço pode causar perdas como: uma compra não ser realizada(sites de e-commerce); clientes trocarem de empresa para uma cujos
+Ter um serviço indisponível pode causar perdas como: compras não serem realizadas (sites de e-commerce); clientes trocarem de empresa para uma cujos
 serviços não fiquem indisponíveis; perda de confiabilidade; entre outras coisas.
 
 Um ataque simples
 que visa indisponibilizar serviço é o ataque de negação de serviço, DoS (\textit{Denial-of-Service}), 
-em resumo esse tipo de ataque realiza um número muito grande
+esse tipo de ataque realiza um número muito grande
 de requisições ao serviço em curto espaço de tempo, assim o servidor não consegue reponder a todos, o que gera indisponibilidade do sistema.
 Existe a variante distribuida do DoS, o DDoS (\textit{Distributed Denial-of-Service}), 
 que utiliza simultaneamente vários computadores para realizar ataques de DoS a um mesmo alvo.
 
 
 No cenário descrito o atacante desenvolve um programa que chama o cliente padrão de SSH do sistema operacional e tenta logar no host alvo. O programa
-apenas solicita a conexão e utiliza uam senha qualquer, uma vez que o objetivo é apenas indisponibilizar o sistema e não invadi-lo.
+apenas solicita a conexão, uma vez que o objetivo é apenas indisponibilizar o sistema e não invadi-lo.
 De posse do programa ele vai a um laboratório de informica de sua universidade e instala o programa em todos os computadores de modo que
 quando se faça o login o programa inicialize em background. Como é preciso apenas a senha de usuário para realizar essa operação e todos
 os alunos utulizam o mesmo usuário, sempre que alguém logar no computador o ataque de DoS iniciará.
@@ -98,13 +98,13 @@ os alunos utulizam o mesmo usuário, sempre que alguém logar no computador o at
 \chapter{Roteiro de ataque de DDoS}
 
 O ataque de DDoS (\textit{Distributed Denial-of-Service}) que será estudado nesta aula objetiva indisponibilizar o serviço de SSH comumente
-utulizado para acesso remoto a computadores. bla bla bla...
+utulizado para acesso remoto a computadores. 
 
 \section{Criando um programa de DoS}
 \label{programa}
 
 A negação de serviço consiste em muitas requisições em um curto intervalo de tempo, de modo que o servidor não consiga atender a todas. Então nesse
-experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmereas requisições \texttt{SSH} a um servidor.
+experimento criaremos um programa em linguagem C que utiliza \textit{multithread} para realizar inúmereas requisições \texttt{SSH} a um servidor.
 
 \begin{enumerate}
 
@@ -167,7 +167,7 @@ do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como 
    \label{nmap}
 \end{codigo}
 
-Observe que na linha 9 lindica que o \texttt{ssh} está rodando e a porta está aberta, então, localize os IPs que estão com a porta 22 
+Observe que na linha 16 lindica que o \texttt{ssh} está rodando e a porta está aberta, então, localize os IPs que estão com a porta 22 
 aberta e substitua o valor da macro \texttt{COMANDO} para \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA}, em nosso exemplo seria
 \texttt{ssh ufabc@192.168.1.5}. 
 
