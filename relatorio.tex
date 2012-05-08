@@ -167,8 +167,6 @@ Para simular o ataque de DoS realize os seguintes passos:
 
 \end{enumerate}
 
-A saída será similar a esta:
-
 \renewcommand{\baselinestretch}{0.5}  % distância entre linhas
 \begin{codigo}[!hbt]
    \tiny  % tamanho da fonte
@@ -209,6 +207,48 @@ a máquina sob ataque irão aparecer. É possível identificar as requisições 
 
 
 
+
+\chapter{Teste do Roteiro}
+Primeiramente o namp foi executado para descobrir quais máquinas possuiam um servidor
+ssh ativo, o resultado pode ser visto no código \ref{nmap}
+A saída será similar a esta:
+
+\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+\begin{codigo}[!hbt]
+   \tiny  % tamanho da fonte
+      %\vspace{2mm}
+      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{saida.namp}
+   \caption{Resultado o nmap.}
+   \label{nmap}
+\end{codigo}
+
+Analizando o resultado do nmap percebe-se que a única máquina com o servidor
+ssh ativo e a prota 22 aberta é a máquina de IP 192.168.1.6.
+
+Editou-se o código \ref{programa} de modo que as macros ficaram da seguinte forma:
+\begin{itemize}
+
+	\item \texttt{ESPERA = 5};
+
+	\item \texttt{NUM\_TRHEADS = 10};
+
+	\item \texttt{COMANDO "ssh user@192.168.1.6"};
+
+	\item \texttt{TEMPO "Mon 2012-05-07 23:25:00 BRT"};
+
+\end{itemize}
+
+O programa foi compilado e executado, obtendo-se a saída mostrada no código \ref{saidaDOS},
+onde é possível perceber que foram executadas 10 tentativas de conexão por ssh.
+
+\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+\begin{codigo}[!htb]
+   \tiny  % tamanho da fonte
+      %\vspace{2mm}
+      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{saida.Dos}
+   \caption{Resultado o nmap.}
+   \label{saidaDOS}
+\end{codigo}
 \clearpage
 \bibliography{relatorio}
 

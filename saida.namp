@@ -1,0 +1,22 @@
+$ nmap -T4 192.168.1.0/24
+
+Starting Nmap 5.00 ( http://nmap.org ) at 2012-05-07 23:06 BRT
+Interesting ports on 192.168.1.1:
+Not shown: 997 closed ports
+PORT   STATE SERVICE
+23/tcp open  telnet
+53/tcp open  domain
+80/tcp open  http
+
+All 1000 scanned ports on 192.168.1.2 are closed
+
+Interesting ports on 192.168.1.6:
+Not shown: 995 closed ports
+PORT     STATE SERVICE
+22/tcp   open  ssh
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+901/tcp  open  samba-swat
+8000/tcp open  http-alt
+
+Nmap done: 256 IP addresses (3 hosts up) scanned in 4.51 seconds
