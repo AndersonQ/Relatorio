@@ -1,0 +1,4 @@
+$ ssh fenix@192.168.1.5
+The authenticity of host '192.168.1.5 (192.168.1.5)' can't be established.
+RSA key fingerprint is 37:95:4f:7b:87:71:cb:1d:1f:71:0f:1f:82:21:c2:0b.
+Are you sure you want to continue connecting (yes/no)? 
