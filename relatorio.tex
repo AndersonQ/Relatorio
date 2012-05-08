@@ -74,41 +74,41 @@ Tiago de França Queiroz}
 \chapter{Descrição de um ataque}
 
 Um atacante deseja tronar indisponível o acesso por SSH do servidor de um conhecido. O modo que ele escolhe para fazer é utilizar
-um programa que ele desenvolveu para gerar requisições de conexção com o servidor initerruptamente partindo de vários computadores
+um programa que ele desenvolveu para gerar requisições de conexão com o servidor interruptamente partindo de vários computadores
 diferentes, ou seja, um ataque de DDoS -- \textit{Distributed Denial-of-Service}.
 
-A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa ofereçe é o serviço.
+A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa oferece é o serviço.
 Ter um serviço pode causar perdas como: uma compra não ser realizada(sites de e-commerce); clientes trocarem de empresa para uma cujos
 serviços não fiquem indisponíveis; perda de confiabilidade; entre outras coisas.
 
 Um ataque simples
 que visa indisponibilizar serviço é o ataque de negação de serviço, DoS (\textit{Denial-of-Service}), 
 em resumo esse tipo de ataque realiza um número muito grande
-de requisições ao serviço em curto espaço de tempo, assim o servidor não consegue reponder a todos, o que gera indisponibilidade do sistema.
-Existe a variante distribuida do DoS, o DDoS (\textit{Distributed Denial-of-Service}), 
+de requisições ao serviço em curto espaço de tempo, assim o servidor não consegue responder a todos, o que gera indisponibilidade do sistema.
+Existe a variante distribuída do DoS, o DDoS (\textit{Distributed Denial-of-Service}), 
 que utiliza simultaneamente vários computadores para realizar ataques de DoS a um mesmo alvo.
 
 
 No cenário descrito o atacante desenvolve um programa que chama o cliente padrão de SSH do sistema operacional e tenta logar no host alvo. O programa
-apenas solicita a conexão e utiliza uam senha qualquer, uma vez que o objetivo é apenas indisponibilizar o sistema e não invadi-lo.
-De posse do programa ele vai a um laboratório de informica de sua universidade e instala o programa em todos os computadores de modo que
+apenas solicita a conexão e utiliza uma senha qualquer, uma vez que o objetivo é apenas indisponibilizar o sistema e não invadi-lo.
+De posse do programa ele vai a um laboratório de informática de sua universidade e instala o programa em todos os computadores de modo que
 quando se faça o login o programa inicialize em background. Como é preciso apenas a senha de usuário para realizar essa operação e todos
-os alunos utulizam o mesmo usuário, sempre que alguém logar no computador o ataque de DoS iniciará.
+os alunos utilizam o mesmo usuário, sempre que alguém logar no computador o ataque de DoS iniciará.
 
 \chapter{Roteiro de ataque de DDoS}
 
 O ataque de DDoS (\textit{Distributed Denial-of-Service}) que será estudado nesta aula objetiva indisponibilizar o serviço de SSH comumente
-utulizado para acesso remoto a computadores. bla bla bla...
+utilizado para acesso remoto a computadores. bla bla bla...
 
 \section{Criando um programa de DoS}
 \label{programa}
 
 A negação de serviço consiste em muitas requisições em um curto intervalo de tempo, de modo que o servidor não consiga atender a todas. Então nesse
-experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmereas requisições \texttt{SSH} a um servidor.
+experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmeras requisições \texttt{SSH} a um servidor.
 
 \begin{enumerate}
 
-	\item Abra o editor preferência, sugere-se a utulização do \texttt{VIM}. Em um terminal execute \texttt{vim};
+	\item Abra o editor preferência, sugere-se a utilização do \texttt{VIM}. Em um terminal execute \texttt{vim};
 	\item Digite o código \ref{DoS};
 	\item Edite as macros \texttt{NUM\_TRHEADS, COMANDO, TEMPO e ESPERA}. Onde:
 		\begin{itemize}
@@ -117,7 +117,7 @@ experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread
 			o número de conexões simultâneas que serão realizadas pelo programa;
 
 			\item \texttt{COMANDO:} é o comando que será executado, neste experimento usaremos o ssh,
-			então coloque um nome de usuário (de perferência um que exista na máquina alvo) e o IP ou
+			então coloque um nome de usuário (de preferencia um que exista na máquina alvo) e o IP ou
 			domínio da máquina;
 
 			\item \texttt{TEMPO:} é a hora em que o ataque irá começar;
@@ -149,23 +149,13 @@ experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread
 
 \section{Realizando o ataque}
 
-O programa descirto na sessão \ref{programa} tem como objetivo mostrar o funcionamento de um ataque de
-DoS ou DDoS (\textit{Distributed Denial of Service}). O DDoS é um ataque de DoS distribuido, ou seja,
-executado por várias máquinas (preferêncialmente com conexões distintas a internet) simultâneamente.
+O programa descrito na sessão \ref{programa} tem como objetivo mostrar o funcionamento de um ataque de
+DoS ou DDoS (\textit{Distributed Denial of Service}). O DDoS é um ataque de DoS distribuído, ou seja,
+executado por várias máquinas (preferencialmente com conexões distintas a internet) simultaneamente.
 
 Para realizar o ataque primeiro é preciso descobrir quais máquinas estão com a porta 22 (porta do ssh)
-aberta, para isso utilize o nmap da seguinte forma: \textit{nmap -A 192.168.1.0/24}. Analize a saída
-do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como descirto na sessão \ref{programa}.
-
-\subsection{DoS}
-
-Para simular o ataque de DoS realize os seguintes passos:
-
-\begin{enumerate}
-
-	\item Escolha a máquina alvo
-
-\end{enumerate}
+aberta, para isso utilize o nmap da seguinte forma: \textit{nmap -A 192.168.1.0/24}. Analise a saída
+do nmap a procura de uma máquina com a porta 22 aberta e edite o programa como descrito na sessão \ref{programa}.
 
 \renewcommand{\baselinestretch}{0.5}  % distância entre linhas
 \begin{codigo}[!hbt]
@@ -176,12 +166,26 @@ Para simular o ataque de DoS realize os seguintes passos:
    \label{nmap}
 \end{codigo}
 
-Observe que na linha 9 lindica que o \texttt{ssh} está rodando e a porta está aberta, então, localize os IPs que estão com a porta 22 
+Observe que na linha 9 indica que o \texttt{ssh} está rodando e a porta está aberta, então, localize os IPs que estão com a porta 22 
 aberta e substitua o valor da macro \texttt{COMANDO} para \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA}, em nosso exemplo seria
 \texttt{ssh ufabc@192.168.1.5}. 
 
-Rode no terminal o comando \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA} e quando for perguntado se deve adicionar a chave reponda sim(yes).
+Rode no terminal o comando \texttt{ssh USUÁRIO@IP\_COM\_PORTA\_22\_ABERTA} e quando for perguntado se deve adicionar a fingerprint
+da chave RSA (ver código 
+\ref{rsa}) responda sim (yes).
 Agora compile e execute o programa. Observe a saída do programa, o que ela indica?
+
+
+\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+\begin{codigo}[!hbt]
+   \tiny  % tamanho da fonte
+      %\vspace{2mm}
+      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{rsa.txt}
+   \caption{Adicionando fingerprint RSA no ssh.}
+   \label{rsa}
+\end{codigo}
+
+
 
 É possível utilizar o \texttt{wireshark} para observar o tráfego da rede e ver o ataque acontecendo, para isso abre o \texttt{wireshark}
 (em um terminal digite \texttt{sudo wireshark}. Na tela inicial localize a lista de interfaces de rede e escolha a interface conectada na
@@ -209,7 +213,7 @@ a máquina sob ataque irão aparecer. É possível identificar as requisições 
 
 
 \chapter{Teste do Roteiro}
-Primeiramente o namp foi executado para descobrir quais máquinas possuiam um servidor
+Primeiramente o namp foi executado para descobrir quais máquinas possuíam um servidor
 ssh ativo, o resultado pode ser visto no código \ref{nmap}
 A saída será similar a esta:
 
@@ -222,8 +226,8 @@ A saída será similar a esta:
    \label{nmap}
 \end{codigo}
 
-Analizando o resultado do nmap percebe-se que a única máquina com o servidor
-ssh ativo e a prota 22 aberta é a máquina de IP 192.168.1.6.
+Analisando o resultado do nmap percebe-se que a única máquina com o servidor
+ssh ativo e a porta 22 aberta é a máquina de IP 192.168.1.6.
 
 Editou-se o código \ref{programa} de modo que as macros ficaram da seguinte forma:
 \begin{itemize}
