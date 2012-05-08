@@ -5,6 +5,21 @@
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage[colorlinks,linkcolor=black,citecolor=black,urlcolor=black,plainpages=false,pagebackref,hyperfootnotes=false,pdfpagelabels]{hyperref}
+\usepackage{framed}
+\usepackage{listings} % para código fonte
+\lstset{numbers=left,
+language=C,
+stepnumber=1,
+firstnumber=1,
+numberstyle=\tiny,
+extendedchars=true,
+breaklines=true,
+frame=tb,
+basicstyle=\footnotesize,
+stringstyle=\ttfamily,
+showstringspaces=false
+backgroundcolor=\color{gray}
+}
 %\usepackage[portugues,boxed,lined]{algorithm2e}
 
 %Para inserir o códigos fonte
@@ -28,7 +43,7 @@
 \author{Anderson de França Queiroz\\
 Tiago de França Queiroz}
 
-%\date{Abril de 2012}
+\date{Abril de 2012}
 
 \begin{document}
 
@@ -75,30 +90,60 @@ O ataque de DDoS (\textit{Distributed Denial-of-Service}) que será estudado nes
 utulizado para acesso remoto a computadores. bla bla bla...
 
 \section{Criando um programa de DoS}
+\label{programa}
 
 A negação de serviço consiste em muitas requisições em um curto intervalo de tempo, de modo que o servidor não consiga atender a todas. Então nesse
 experimento criaremos um programa em linguagem C que utiliza \textit{mult-thread} para realizar inúmereas requisições \texttt{SSH} a um servidor.
 
 \begin{enumerate}
 
-	\item Abra o editor ASCI de sua preferência, sugere-se a utulização do \texttt{VIM}. Em um terminal execute \texttt{vim};
-	\item Digite o código REFERENCIAR O CODIGO;
-	\item Salve com o nome \texttt{DoS.c}. Utilize ESC :w Dos.c;
-	\item Saia o editor. Utilize ESC :q;
-	\item Compile. No terminal execute \texttt{cc DoS.c -o DoS};
+	\item Abra o editor preferência, sugere-se a utulização do \texttt{VIM}. Em um terminal execute \texttt{vim};
+	\item Digite o código \ref{DoS};
+	\item Edite as macros \texttt{NUM\_TRHEADS, COMANDO, TEMPO e ESPERA}. Onde:
+		\begin{itemize}
+		
+			\item \texttt{NUM\_TRHEADS:} é o número de threads que serão criadas, ou seja,
+			o número de conexões simultâneas que serão realizadas pelo programa;
+
+			\item \texttt{COMANDO:} é o comando que será executado, neste experimento usaremos o ssh,
+			então coloque um nome de usuário (de perferência um que exista na máquina alvo) e o IP ou
+			domínio da máquina;
+
+			\item \texttt{TEMPO:} é a hora em que o ataque irá começar;
+
+			\item \texttt{ESPERA:} é o tempo que o programa irá esperar antes de ser fechado e encerrar
+			as threads que estão realizando o  DoS.
+
+		\end{itemize}
+
+	\item Salve com o nome \texttt{DoS.c} e saia do editor;
+	\item Compile, para isso execute no terminal \texttt{cc DoS.c -o DoS -lpthread};
 
 \end{enumerate}
 
-%\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
-%\begin{codigo}[!hbt]
-%   \tiny  % tamanho da fonte
-%      %\vspace{2mm}
-%      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{Code/HelloWorldKernel.cu}
-%   \caption{\textit{Hello World} com uma chamada de \textit{kernel}}
-%   \label{code.HelloWorldKernel.cu}
-%\end{codigo}
+%\begin{framed}
+%	\lstinputlisting[title={Código}, language=C, label=DoS, caption={Programa para o DoS}, extendedchars=true]{../DDOS.c}
+%\end{framed}
 
+\renewcommand{\baselinestretch}{0.5}  % distância entre linhas
+\begin{codigo}[!hbt]
+   \tiny  % tamanho da fonte
+      %\vspace{2mm}
+      \VerbatimInput[xleftmargin=8mm,numbers=left,obeytabs=true]{DDOS.c}
+   \caption{Código fonte em C para o DoS.}
+   \label{DoS}
+\end{codigo}
 
+\clearpage
+
+\section{Realizando o ataque}
+
+O programa descirto na sessão \ref{programa} tem como objetivo mostrar o funcionamento de um ataque de
+DoS ou DDoS (\textit{Distributed Denial of Service}). O DDoS é um ataque de DoS distribuido, ou seja,
+executado por várias máquinas (preferêncialmente com conexões distintas a internet) simultâneamente.
+
+Para realizar o ataque primeiro é preciso descobrir quais máquinas estão com a porta 22 (porta do ssh)
+aberta, para isso utilize o nmap da seguinte forma: $$\text{nmap }$$
 \clearpage
 \bibliography{relatorio}
 
