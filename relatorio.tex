@@ -58,6 +58,10 @@ Tiago de França Queiroz}
 
 \chapter{Descrição de um ataque}
 
+Um atacante deseja tronar indisponível o acesso por SSH do servidor de um conhecido. O modo que ele escolhe para fazer é utilizar
+um programa que ele desenvolveu para gerar requisições de conexção com o servidor initerruptamente partindo de vários computadores
+diferentes, ou seja, um ataque de DDoS -- \textit{Distributed Denial-of-Service}.
+
 A disponibilidade de serviço é muito importante para várias empresas, principalmente quando o produto que a empresa ofereçe é o serviço.
 Ter um serviço pode causar perdas como: uma compra não ser realizada(sites de e-commerce); clientes trocarem de empresa para uma cujos
 serviços não fiquem indisponíveis; perda de confiabilidade; entre outras coisas.
@@ -68,6 +72,13 @@ em resumo esse tipo de ataque realiza um número muito grande
 de requisições ao serviço em curto espaço de tempo, assim o servidor não consegue reponder a todos, o que gera indisponibilidade do sistema.
 Existe a variante distribuida do DoS, o DDoS (\textit{Distributed Denial-of-Service}), 
 que utiliza simultaneamente vários computadores para realizar ataques de DoS a um mesmo alvo.
+
+
+No cenário descrito o atacante desenvolve um programa que chama o cliente padrão de SSH do sistema operacional e tenta logar no host alvo. O programa
+apenas solicita a conexão e utiliza uam senha qualquer, uma vez que o objetivo é apenas indisponibilizar o sistema e não invadi-lo.
+De posse do programa ele vai a um laboratório de informica de sua universidade e instala o programa em todos os computadores de modo que
+quando se faça o login o programa inicialize em background. Como é preciso apenas a senha de usuário para realizar essa operação e todos
+os alunos utulizam o mesmo usuário, sempre que alguém logar no computador o ataque de DoS iniciará.
 
 \chapter{Roteiro de ataque de DDoS}
 
